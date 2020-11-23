@@ -55,21 +55,21 @@ namespace LIS2A.Models
         /// <summary>
         /// Символ отображающий тип заголовка
         /// </summary>
-        public char TypeID { get; }
+        private readonly char typeID;
 
         private RecordType(char typeID)
         {
-            TypeID = typeID;
+            this.typeID = typeID;
         }
 
         public override bool Equals(object obj)
         {
             if (obj is RecordType recordType)
-                return this.TypeID.Equals(recordType.TypeID);
+                return this.typeID.Equals(recordType.typeID);
             return false;
         }
 
-        public override int GetHashCode() => TypeID.GetHashCode();
+        public override int GetHashCode() => typeID.GetHashCode();
 
         public static bool operator ==(RecordType left, RecordType right)
         {
