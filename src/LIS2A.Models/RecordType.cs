@@ -71,14 +71,39 @@ namespace LIS2A.Models
 
         public override int GetHashCode() => typeID.GetHashCode();
 
-        public static bool operator ==(RecordType left, RecordType right)
+        public static bool operator ==(RecordType left, RecordType right) => left.typeID == right.typeID;
+
+        public static bool operator !=(RecordType left, RecordType right) => !(left == right);
+
+        /// <summary>
+        /// Парсит первый символ полученного массива символов
+        /// </summary>
+        /// <param name="span">Входящий массив символов</param>
+        /// <returns>Значение соответствующего типа записи</returns>
+        public static RecordType Parse(ReadOnlySpan<char> span)
         {
-            return left.Equals(right);
+            if (span.Length < 1) throw new ArgumentException("Span is empty", nameof(span));
+            return Parse(span[0]);
         }
 
-        public static bool operator !=(RecordType left, RecordType right)
+        /// <summary>
+        /// Парсит входящий символ, независимо от регистра
+        /// </summary>
+        /// <param name="input">Входящий символ</param>
+        /// <returns>Значение соответствующего типа записи</returns>
+        public static RecordType Parse(char input) => ParseUppercased(char.ToUpperInvariant(input));
+
+        private static RecordType ParseUppercased(char symbol) => symbol switch
         {
-            return !(left == right);
-        }
+            'H' => MessageHeader,
+            'P' => PatientIdentifying,
+            'O' => TestOrder,
+            'R' => Result,
+            'C' => Comment,
+            'Q' => RequestInformation,
+            'S' => Scientific,
+            'M' => ManufacturerInformation,
+            _ => throw new ArgumentException("Record type is not recognized")
+        };
     }
 }
