@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\LIS2A.Models\LIS2A.Models.csproj" />
+    <ProjectReference Include="..\..\src\LIS2A.Models\LIS2A.csproj" />
   </ItemGroup>
 
 </Project>

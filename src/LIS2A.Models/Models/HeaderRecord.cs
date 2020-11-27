@@ -14,25 +14,11 @@ namespace LIS2A.Models
         public RecordType RecordTypeID => RecordType.MessageHeader;
 
         /// <summary>
-        /// Символ-разделитель полей
+        /// Разделители - второе поле
         /// </summary>
-        public char FieldDelimiter { get; private set; }
+        public Delimiters Delimiters { get; }
 
-        /// <summary>
-        /// Символ разделитель пвторяющихся записей
-        /// </summary>
-        public char RepeatDelimiter { get; private set; }
-
-        /// <summary>
-        /// Символ-разделитель компонент записи
-        /// </summary>
-        public char ComponentDelimiter { get; private set; }
-
-        /// <summary>
-        /// Escape-символ
-        /// </summary>
-        public char EscapeCharacter { get; private set; }
-
+        
         /// <summary>
         /// Уникальный номер или другой идентификатор передаваемого сообщения
         /// </summary>
@@ -106,6 +92,8 @@ namespace LIS2A.Models
             mutableResult.RepeatDelimiter = input[2];
             mutableResult.ComponentDelimiter = input[3];
             mutableResult.EscapeCharacter = input[4];
+
+            mutableResult.Delimiters = Delimiters.Parse(input.Slice())
 
             if (input.Length > 6)
             {

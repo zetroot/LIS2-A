@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIS2A.Models", "src\LIS2A.Models\LIS2A.Models.csproj", "{9A5EBA96-7CF4-43B4-9545-105FF9E9F9CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIS2A", "src\LIS2A.Models\LIS2A.csproj", "{9A5EBA96-7CF4-43B4-9545-105FF9E9F9CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6904AD81-A8A9-44EE-A161-D0987B514875}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIS2A.Test.Models", "test\LIS2A.Test.Models\LIS2A.Test.Models.csproj", "{609C7E6F-8016-4E8E-9FB0-011DEC288975}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIS2A.Test.Models", "test\LIS2A.Test.Models\LIS2A.Test.Models.csproj", "{609C7E6F-8016-4E8E-9FB0-011DEC288975}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A6DF1D5D-F79E-4F93-AEEA-862056CA7D99}"
 EndProject

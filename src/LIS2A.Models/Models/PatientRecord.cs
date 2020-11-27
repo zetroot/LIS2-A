@@ -42,5 +42,7 @@ namespace LIS2A.Models
         public string HospitalInstitution { get; }
         public string DosageCategory { get; }
 
+
+
     }
 }
