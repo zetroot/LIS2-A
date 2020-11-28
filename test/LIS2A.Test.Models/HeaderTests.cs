@@ -48,7 +48,7 @@ namespace LIS2A.Test.Models
             var parsed = HeaderRecord.Parse(minimalInput);
 
             // assert
-            Assert.Equal('|', parsed.FieldDelimiter);
+            Assert.Equal('|', parsed.Delimiters.FieldDelimiter);
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace LIS2A.Test.Models
             var parsed = HeaderRecord.Parse(minimalInput);
 
             // assert
-            Assert.Equal('\\', parsed.RepeatDelimiter);
+            Assert.Equal('\\', parsed.Delimiters.RepeatDelimiter);
         }
 
         [Fact]
@@ -68,7 +68,7 @@ namespace LIS2A.Test.Models
             var parsed = HeaderRecord.Parse(minimalInput);
 
             // assert
-            Assert.Equal('^', parsed.ComponentDelimiter);
+            Assert.Equal('^', parsed.Delimiters.ComponentDelimiter);
         }
 
         [Fact]
@@ -78,7 +78,7 @@ namespace LIS2A.Test.Models
             var parsed = HeaderRecord.Parse(minimalInput);
 
             // assert
-            Assert.Equal('&', parsed.EscapeCharacter);
+            Assert.Equal('&', parsed.Delimiters.EscapeCharacter);
         }
 
         [Fact]
@@ -102,7 +102,8 @@ namespace LIS2A.Test.Models
             Assert.Equal("Comment", actual.Comment);
             Assert.Equal(ProcessingType.Production, actual.ProcessingID);
             Assert.Equal("VersionNUmber", actual.VersionNumber);
-            Assert.Equal(new DateTime(1970, 01, 01, 01, 02, 03), actual.MessageDateTime);
+            Assert.NotNull(actual.MessageDateTime);
+            Assert.Equal(new DateTime(1970, 01, 01, 01, 02, 03), actual.MessageDateTime.Value.DateTime);
         }
     }
 }

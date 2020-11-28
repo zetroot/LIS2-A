@@ -77,7 +77,7 @@ namespace LIS2A.Models
         /// <summary>
         /// Дата-время сообщения
         /// </summary>
-        public DateTime? MessageDateTime { get; }
+        public DateTimeField? MessageDateTime { get; }
 
         /// <summary>
         /// Внутренний конструктор для работы фабрики
@@ -108,7 +108,7 @@ namespace LIS2A.Models
             string comment,
             ProcessingType? processingID,
             string versionNumber,
-            DateTime? messageDateTime)
+            DateTimeField? messageDateTime)
         {
             Delimiters = delimiters;
             MessageControlID = messageControlID;
@@ -144,15 +144,11 @@ namespace LIS2A.Models
             var comment = new string(input.GetField(delimiters.FieldDelimiter, 10));
             var processingType = input.GetField(delimiters.FieldDelimiter, 11);
             var processingID = processingType.IsEmpty ? default(ProcessingType?) : ProcessingType.Parse(processingType[0]);
-            var versionNumber = new string(input.GetField(delimiters.FieldDelimiter, 12));
-            var dateTimeText = input.GetField(delimiters.FieldDelimiter, 13);
-            var msgDateTime = default(DateTime?);
-            if (DateTime.TryParseExact( s: dateTimeText,
-                                        format: "yyyyMMddHHmmss",
-                                        provider: CultureInfo.InvariantCulture,
-                                        style: DateTimeStyles.AssumeLocal | DateTimeStyles.AllowWhiteSpaces,
-                                        result: out DateTime parsed))
-                    msgDateTime = parsed;
+            var versionNumber = new string(input.GetField(delimiters.FieldDelimiter, 12));            
+            
+            var msgDateTime = default(DateTimeField?);
+            var msgDTField = input.GetField(delimiters.FieldDelimiter, 13);
+            if (!msgDTField.IsEmpty) msgDateTime = DateTimeField.Parse(msgDTField);
 
 
             return new HeaderRecord(
