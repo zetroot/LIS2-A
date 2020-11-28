@@ -43,7 +43,7 @@ namespace LIS2A.Models
         /// </summary>
         /// <param name="input">Исходный массив символов</param>
         /// <returns>Построенный объект разделителей</returns>
-        public static Delimiters Parse(Span<char> input)
+        public static Delimiters Parse(ReadOnlySpan<char> input)
         {
             if (input.IsEmpty) throw new ArgumentException("Can't parse delimiters from empty span");
             if (input.Length < 4) throw new ArgumentException("Span is too short. Need 4 chars at least.");
