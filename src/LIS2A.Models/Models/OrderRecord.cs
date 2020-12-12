@@ -28,6 +28,9 @@ namespace LIS2A.Models
         public string UserField2 { get; }
         public string LaboratoryField1 { get; }
         public string LaboratoryField2 { get; }
-        public DateTimeField 
+        public DateTimeField ResultsReported { get; }
+        public string InstrumentCharge { get; }
+        public string InstrumentSectionID { get; }
+
     }
 }
